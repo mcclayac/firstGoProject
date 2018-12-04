@@ -139,6 +139,17 @@ func main() {
 	sold, name := calculateInvUtil(100, 175, df1)
 	fmt.Println(name, sold)
 
+	// ------------------------------------------------
+
+	dg1 := "A1 Auto"
+	dg2 := "Discount Auto"
+	dg3 := "Riverside Automart"
+
+	printDealers(dg1, dg2, dg3)
+	fmt.Println("\n")
+	dealers := []string{dg1, dg2, dg3} /// Array Declarationm
+	printDealers(dealers...)
+
 }
 
 type dealerShip struct {
@@ -155,4 +166,10 @@ func calculateInvUtil(remaining float32, start float32, dealer dealerShip) (perc
 	dealerName = dealer.name + " sold "
 	percentSold = 1 - remaining/start
 	return
+}
+
+func printDealers(dealers ...string) {
+	for _, dealerName := range dealers { // for loop with throwaway index
+		fmt.Println(dealerName)
+	}
 }
