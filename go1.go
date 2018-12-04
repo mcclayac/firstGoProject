@@ -2,9 +2,30 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
+/*
+Go types
+
+bool
+
+string
+
+int  int8  int16  int32  int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // alias for uint8
+
+rune // alias for int32
+	 // represents a unicode code point
+
+float32 float64
+
+complex64 complex128
+
+*/
 //var carTypeDist1 string = "Toyota"
 //var carTypeDist2 = "Ford"
 
@@ -50,4 +71,16 @@ func main() {
 	fmt.Println(fordHeadQuarters)
 	fmt.Println(newHQ, myConst)
 	//fmt.Println(myConst)
+
+	//-------------------------------------------------
+	var mystring = "3"
+	var x = 10
+	var f float32 = 2.0
+	fmt.Println(mystring, x, f)
+
+	number, _ := strconv.Atoi(mystring) //Atoi returns 2 values
+	fmt.Println(number)
+	x = number
+	fmt.Println(x)
+
 }
