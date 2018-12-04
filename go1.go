@@ -83,4 +83,10 @@ func main() {
 	x = number
 	fmt.Println(x)
 
+	fmt.Printf("%T", f) // print the variable type
+	fmt.Printf("%T", x) // print the variable type
+
+	fmt.Printf("%v", f) // print the variable type
+	fmt.Printf("%v", x) // print the variable type
+
 }
