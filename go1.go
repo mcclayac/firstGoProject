@@ -89,4 +89,48 @@ func main() {
 	fmt.Printf("%v", f) // print the variable type
 	fmt.Printf("%v", x) // print the variable type
 
+	//-------------------------------------------------
+	fmt.Println("")
+	carLotA := 10
+	carLotB := 21 // 20
+	//carlotC := 25
+
+	carlotTotal := carLotA + carLotB
+	fmt.Println("carlotTotal = ", carlotTotal)
+
+	carlotTotal = carlotTotal + 10
+	carlotTotal += 10 // Add 10
+	fmt.Println("carlotTotal = ", carlotTotal)
+
+	carlotTotal = carlotTotal * 10
+	carlotTotal *= 10 // multiply by 10
+	fmt.Println("carlotTotal = ", carlotTotal)
+
+	carlotTotal = carLotB / carLotA
+	//carlotTotal *= 10      // multiply by 10
+	fmt.Println("carlotTotal = ", carlotTotal)
+
+	carlotTotal = carLotB % carLotA // remainder
+	//carlotTotal *= 10      // multiply by 10
+	fmt.Println("carlotTotal = ", carlotTotal)
+
+	//-------------------------------------------------
+	fmt.Println("Hello World!")
+	d := dealerShip{name: "A1 Auto", city: "Los Angeles"}
+	d.city = "Phoenix"
+	fmt.Println("city = " + d.city)
+	fmt.Println("name =" + d.name)
+
+	var d2 dealerShip
+	d2 = dealerShip{name: "Discount Auto", city: "Houston"}
+	fmt.Println(d2)
+
+	d3 := dealerShip{}
+	fmt.Println("d3.name=" + d3.name)
+
+}
+
+type dealerShip struct {
+	name string
+	city string
 }
