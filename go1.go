@@ -128,9 +128,31 @@ func main() {
 	d3 := dealerShip{}
 	fmt.Println("d3.name=" + d3.name)
 
+	//-------------------------------------------------
+	// ------------------------------------------------
+	df1 := dealerShip{"A1 Auto", "Los Angeles"}
+	dealerName := creareDealerFullName(df1.name, df1.city)
+	fmt.Println(dealerName)
+
+	// ------------------------------------------------
+
+	sold, name := calculateInvUtil(100, 175, df1)
+	fmt.Println(name, sold)
+
 }
 
 type dealerShip struct {
 	name string
 	city string
+}
+
+func creareDealerFullName(s1 string, s2 string) string {
+	return s1 + " of " + s2
+}
+
+func calculateInvUtil(remaining float32, start float32, dealer dealerShip) (percentSold float32, dealerName string) {
+
+	dealerName = dealer.name + " sold "
+	percentSold = 1 - remaining/start
+	return
 }
