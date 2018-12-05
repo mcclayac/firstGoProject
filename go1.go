@@ -51,6 +51,9 @@ const toyotaHeadQuarters, fordHeadQuarters = "Toyota Motor Corporation", "Ford M
 
 //var newHQ string = "NewHQ"
 
+var shippingDays = 30
+var shippingDaysPtr = new(int)
+
 func main() {
 	fmt.Println("Hello Tony, these nuts, 世界")
 	fmt.Println("This is the Golong")
@@ -159,6 +162,30 @@ func main() {
 	writeToFile(file, "A1 Auto")
 	writeToFile(file, "Tony McClay")
 
+	// ------------------------------------------------
+	// pointers
+
+	shippingDaysAdjustments(shippingDays)
+	fmt.Println("After shipingDaysAdjustment call", shippingDays)
+
+	shippingDaysAdjustmentsPtr(&shippingDays)
+	fmt.Println("After shipingDaysAdjustmentPtr call", shippingDays)
+	fmt.Println("Value of the shippingDays pointer:", &shippingDays) // value of the pointer
+
+	shipper := shipper{}
+	shipper.id = 400
+	shipper.name = "Pacific Shippers"
+
+	shipperUpdates(&shipper)
+	fmt.Println("shipper.id After Shipper updates Call:", shipper.id)
+	fmt.Println("shipper.name After Shipper updates Call:", shipper.name)
+
+	//shippingDaysPtr = 55
+	*shippingDaysPtr = 55
+	shippingDaysAdjustmentsPtr(shippingDaysPtr)
+	// fmt.Println("After shipingDaysAdjustmentPtr &shippingDaysPtr call", shippingDaysPtr)
+	fmt.Println("After shipingDaysAdjustmentPtr &shippingDaysPtr call", *shippingDaysPtr)
+
 }
 
 type dealerShip struct {
@@ -201,4 +228,22 @@ func closeFile(file *os.File) {
 	fmt.Println("Closing file")
 	file.Close()
 
+}
+
+func shippingDaysAdjustments(shippingDays int) {
+	shippingDays += 10
+}
+
+func shippingDaysAdjustmentsPtr(shippingDays *int) {
+	*shippingDays += 10
+}
+
+func shipperUpdates(s *shipper) {
+	s.id += 10
+	s.name += "Inc."
+}
+
+type shipper struct {
+	name string
+	id   int
 }
