@@ -231,6 +231,35 @@ func main() {
 		fmt.Println("Default case")
 	}
 
+	// ------------------------------------------------
+	// Arrays and slices
+
+	var carTypes [3]string // Initialize an emply array
+	carTypes[0] = "Toyota"
+	carTypes[1] = "Ford"
+	carTypes[2] = "Nissan"
+	fmt.Println("CarTypes [1] : ", carTypes[1])
+	fmt.Println("CarTypes len =", len(carTypes))
+
+	carTypes2 := [3]string{"Toyota", "Ford", "Nissan"} // initialize array while declaring it
+	fmt.Println("CarTypes2 [2] : ", carTypes2[2])
+
+	carTypesSlice := []string{"Toyota", "Ford", "Nissan"} // Slice = not a fixed size array
+	fmt.Println("carTypesSlice [2] : ", carTypesSlice[2])
+	carTypesSlice = append(carTypesSlice, "Telsa")
+	fmt.Println("carTypeSlice len =", len(carTypesSlice))
+
+	carTypesSliceMake := make([]string, 3)
+	carTypesSliceMake[0] = "Toyota"
+	carTypesSliceMake[1] = "Ford"
+	carTypesSliceMake[2] = "Nissan"
+
+	fmt.Println("carTypesSLice =", carTypesSlice)
+
+	carTypesSlice2 := carTypesSlice[1:3]
+	fmt.Println("carTypesSLice2 len =", len(carTypesSlice2))
+	fmt.Println("carTypesSLice2 [2:4]=", carTypesSlice2)
+
 }
 
 type dealerShip struct {
