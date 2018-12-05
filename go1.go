@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 	"time"
 )
@@ -146,9 +147,17 @@ func main() {
 	dg3 := "Riverside Automart"
 
 	printDealers(dg1, dg2, dg3)
-	fmt.Println("\n")
-	dealers := []string{dg1, dg2, dg3} /// Array Declarationm
+	fmt.Println("")
+	dealers := []string{dg1, dg2, dg3} /// Array Declaration
 	printDealers(dealers...)
+
+	// ------------------------------------------------
+	// Defer  similar to try catch finally
+
+	file := createFile("dealers.txt")
+	defer closeFile(file)
+	writeToFile(file, "A1 Auto")
+	writeToFile(file, "Tony McClay")
 
 }
 
@@ -172,4 +181,24 @@ func printDealers(dealers ...string) {
 	for _, dealerName := range dealers { // for loop with throwaway index
 		fmt.Println(dealerName)
 	}
+}
+
+func createFile(path string) *os.File {
+	fmt.Println("crearing file")
+	file, err := os.Create(path)
+	if err != nil { // if error not equal to nil ... panic (terminate)
+		panic(err)
+	}
+	return file
+}
+
+func writeToFile(file *os.File, dealerName string) {
+	fmt.Println("Writng to file")
+	fmt.Fprintln(file, dealerName)
+}
+
+func closeFile(file *os.File) {
+	fmt.Println("Closing file")
+	file.Close()
+
 }
