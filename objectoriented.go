@@ -32,6 +32,15 @@ func main() {
 	cCar.numberOfDoor = 4
 	fmt.Println(cCar)
 	cCar.getMpg()
+
+	// -----------------------------------------
+	// Polymorphic
+	aTruck := truck{vehicle{15, 2}, black}
+	mans := [...]manufacturer{cCar, aTruck}
+	for i, _ := range mans {
+		fmt.Println("iteration=", i, "mans=", mans[i].getVin())
+	}
+
 }
 
 type vehicle struct {
@@ -42,6 +51,23 @@ type vehicle struct {
 type car struct {
 	vehicle
 	color Color
+}
+
+type truck struct {
+	vehicle
+	color Color
+}
+
+func (t truck) getVin() string {
+	return "truck vin"
+}
+
+func (c car) getVin() string {
+	return "car vin"
+}
+
+type manufacturer interface {
+	getVin() string
 }
 
 func (v *vehicle) getMpg() {
