@@ -202,6 +202,35 @@ func main() {
 	fmt.Println("Precinct :", o.precinct)
 	fmt.Println("Officer run :", o.run())
 
+	// ------------------------------------------------
+	// conditionals
+
+	carLotA = 9
+	carLotB = 30
+
+	if carLotB >= carLotA {
+		fmt.Println("CarlotB is greater than or equal too A")
+	} else {
+		fmt.Println("Condition failed - fallthrough")
+	}
+
+	if carLotA > 15 {
+		fmt.Println("value is greater than 15")
+	} else if carLotA > 9 {
+		fmt.Println("value is greater than 9")
+	} else {
+		fmt.Println("default case")
+	}
+
+	switch carLotA {
+	case 15:
+		fmt.Println("case value is 15")
+	case 9, 11, 12:
+		fmt.Println("case value is 9 or 11 or 12 --", carLotA)
+	default:
+		fmt.Println("Default case")
+	}
+
 }
 
 type dealerShip struct {
