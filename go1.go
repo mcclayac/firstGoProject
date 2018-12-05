@@ -260,6 +260,28 @@ func main() {
 	fmt.Println("carTypesSLice2 len =", len(carTypesSlice2))
 	fmt.Println("carTypesSLice2 [2:4]=", carTypesSlice2)
 
+	// ------------------------------------------------
+	// Maps { Dictionaries }
+
+	carDealerInventory := make(map[string]int)
+	carDealerInventory["A1 Auto"] = 76
+	fmt.Println("A1 Auto inv =", carDealerInventory["A1 Auto"])
+	fmt.Println("len of carDealerInventory =", len(carDealerInventory))
+
+	carDealerInventory["Southwest Auto Mall"] = 112
+	fmt.Println("len of carDealerInventory =", len(carDealerInventory))
+
+	delete(carDealerInventory, "A1 Auto")
+	fmt.Println("After Delete of A1 Auto carDealerInventory =", len(carDealerInventory))
+
+	fmt.Println("Southwest Auto Mall inv =", carDealerInventory["Southwest Auto Mall"])
+	fmt.Println("A1 Auto inv =", carDealerInventory["A1 Auto"])
+
+	carDealerTown := make(map[string]string)
+	carDealerTown["A1 Auto"] = "Austin, TX"
+	carDealerTown["Southwest Auto Mall"] = "Phoenix, AZ"
+
+	fmt.Println("A1 Auto is located in", carDealerTown["A1 Auto"])
 }
 
 type dealerShip struct {
