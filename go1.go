@@ -282,6 +282,57 @@ func main() {
 	carDealerTown["Southwest Auto Mall"] = "Phoenix, AZ"
 
 	fmt.Println("A1 Auto is located in", carDealerTown["A1 Auto"])
+
+	// ------------------------------------------------
+	// Looping Array Slices & Map Looping
+
+	var carTypesLooping [3]string
+	carTypesLooping[0] = "Toyota"
+	carTypesLooping[1] = "Ford"
+	carTypesLooping[2] = "Nissan"
+
+	i := 0
+	for i < len(carTypesLooping) {
+		fmt.Println("Car Types =", carTypesLooping[i])
+		i++ // increment
+	}
+	fmt.Println("\nfor loop verbose")
+
+	for j := 0; j < len(carTypesLooping); j++ {
+		fmt.Println("Car Types =", carTypesLooping[j])
+	}
+
+	fmt.Println("\nRange Loop")
+	for k, value := range carTypesLooping {
+		fmt.Println("k =", k, "&value =", value)
+	}
+
+	fmt.Println("\nRange Loop igmnore a key or value")
+	for _, value := range carTypesLooping {
+		fmt.Println("value =", value)
+	}
+
+	// Looping through Maps
+	carDealerInventoryLooping := make(map[string]int)
+	carDealerInventoryLooping["A1 Auto"] = 76
+	carDealerInventoryLooping["Southwest Auto Mall"] = 112
+
+	// Looping through Maps
+	carDealerInventoryLooping2 := make(map[int]string)
+	carDealerInventoryLooping2[76] = "A1 Auto"
+	carDealerInventoryLooping2[112] = "Southwest Auto Mall"
+
+	fmt.Println("\nFirst Dictionary Loop")
+	// This does not work for map
+	for m := 0; m < len(carDealerInventoryLooping2); m++ {
+		// fmt.Println("carDealerInventoryLooping[m] = ", carDealerInventoryLooping2[m])
+		fmt.Println(carDealerInventoryLooping2[m])
+	}
+
+	// This is the correct implementation for go maps
+	for key, _ := range carDealerInventoryLooping {
+		fmt.Println("key =", key, "&value =", carDealerInventoryLooping[key])
+	}
 }
 
 type dealerShip struct {
