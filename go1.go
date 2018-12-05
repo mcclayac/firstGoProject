@@ -186,6 +186,22 @@ func main() {
 	// fmt.Println("After shipingDaysAdjustmentPtr &shippingDaysPtr call", shippingDaysPtr)
 	fmt.Println("After shipingDaysAdjustmentPtr &shippingDaysPtr call", *shippingDaysPtr)
 
+	// ------------------------------------------------
+	// Interfaces
+
+	p := new(person)
+	fmt.Println(p.talk())
+	fmt.Println(p.walk())
+
+	o := new(policeOfficer)
+	fmt.Println(o.talk())
+	fmt.Println(o.walk())
+	o.badgeNumber = 1000
+	o.precinct = "Havey District"
+	fmt.Println("Badge Number:", o.badgeNumber)
+	fmt.Println("Precinct :", o.precinct)
+	fmt.Println("Officer run :", o.run())
+
 }
 
 type dealerShip struct {
@@ -246,4 +262,49 @@ func shipperUpdates(s *shipper) {
 type shipper struct {
 	name string
 	id   int
+}
+
+type person struct {
+	firstname string
+	lastname  string
+}
+
+type policeOfficer struct {
+	badgeNumber int
+	precinct    string
+}
+
+type behaviors interface {
+	talk() string
+	walk() int
+	run() int
+}
+
+// Person implenmentation
+func (p *person) talk() string {
+	return "hi there"
+}
+
+func (p *person) walk() int {
+	return 10
+}
+
+// Officer implementation
+func (o *policeOfficer) talk() string {
+	return "Have a nice day"
+}
+
+func (o *policeOfficer) walk() int {
+	return 20
+}
+
+//func[param list] [interface func name] [interface func return type]
+func (o *policeOfficer) run() int {
+	return 50
+}
+
+// Regular function
+//func [name] [param list] [return type]
+func run(s int) int {
+	return s
 }
